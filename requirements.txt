@@ -1,0 +1,7 @@
+Flask
+transformers
+torch
+nltk
+PyPDF2
+pymongo
+reportlab

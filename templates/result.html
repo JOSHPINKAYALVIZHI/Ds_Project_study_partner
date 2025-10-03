@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>📌 AI Study Partner - Results</h1>
+
+<!-- Summary Section -->
+<section class="summary">
+    <h2>📌 Summary</h2>
+    {% for point in summary.split('•') if point.strip() %}
+        <p>• {{ point.strip() }}</p>
+    {% endfor %}
+</section>
+
+<!-- Quiz Questions Section -->
+<section class="quiz-questions">
+    <h2>📝 Quiz Questions</h2>
+    <ol>
+        {% for q in questions %}
+            <li>{{ q }}</li>
+        {% endfor %}
+    </ol>
+</section>
+
+<!-- MCQs Section -->
+<section class="mcqs">
+    <h2>✅ Multiple Choice Questions</h2>
+    <form action="{{ url_for('submit_answers') }}" method="POST" class="mcq-form">
+        {% for i, mcq in indexed_mcqs %}
+            <div class="mcq">
+                <p><strong>Q{{ i+1 }}: {{ mcq['question'] }}</strong></p>
+                {% for option in mcq['options'] %}
+                    <label>
+                        <input type="radio" name="q{{ i }}" value="{{ option }}" required>
+                        {{ option }}
+                    </label><br>
+                {% endfor %}
+            </div>
+            <hr>
+        {% endfor %}
+        <button type="submit" class="submit-btn">🚀 Submit Answers</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Study Partner - Score</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
+        h1, h2 { color: #333; }
+        .section { margin-bottom: 30px; padding: 20px; background: white; border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .correct { color: green; font-weight: bold; }
+        .wrong { color: red; font-weight: bold; }
+        a.button { display: inline-block; padding: 10px 15px; font-size: 16px; border-radius: 5px; background-color: #4CAF50; color: white; text-decoration: none; margin-top: 20px; }
+        a.button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <h1>Your Quiz Score</h1>
+
+    <div class="section">
+        <h2>Score: {{ score }} / {{ total }}</h2>
+        <table>
+            <tr>
+                <th>Question</th>
+                <th>Your Answer</th>
+                <th>Correct Answer</th>
+                <th>Status</th>
+            </tr>
+            {% for i in range(total) %}
+            <tr>
+                <td>Q{{ i+1 }}</td>
+                <td>{{ user_answers['Q' ~ (i+1)] }}</td>
+                <td>{{ correct_answers[i] }}</td>
+                <td>
+                    {% if user_answers['Q' ~ (i+1)] == correct_answers[i] %}
+                        <span class="correct">✔ Correct</span>
+                    {% else %}
+                        <span class="wrong">✖ Wrong</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <a href="/" class="button">Try Another Text / PDF</a>
+    </div>
+</body>
+</html>

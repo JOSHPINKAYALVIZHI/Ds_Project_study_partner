@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto px-6 py-8">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">📜 History</h1>
+    
+    <ul class="space-y-4">
+        {% for r in records %}
+        <li class="p-4 bg-white rounded-lg shadow">
+            <p class="text-gray-700">
+                <strong>Summary:</strong> {{ r.summary[:200] }}...
+            </p>
+            <p class="text-gray-700 mt-2">
+                <strong>Questions:</strong> {{ r.questions|length }} | 
+                <strong>MCQs:</strong> {{ r.mcqs|length }}
+            </p>
+            <p class="text-sm text-gray-500 mt-1">🕒 {{ r.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+        </li>
+        {% else %}
+        <li class="text-gray-500">No history found yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

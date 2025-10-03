@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Study Partner</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>Study Partner</h1>
+<br>
+<form method="POST" enctype="multipart/form-data">
+    <br>
+    <textarea name="notes" placeholder="Paste your notes here"></textarea>
+    <br>
+    <input type="file" name="file">
+    <br>
+    <!-- <input type="number" name="mcq_limit" placeholder="Number of MCQs (5-15)" min="5" max="15"> -->
+    <button type="submit">Generate</button>
+</form>
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+</body>
+</html>
