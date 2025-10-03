@@ -7,13 +7,23 @@
     <ul class="space-y-4">
         {% for r in records %}
         <li class="p-4 bg-white rounded-lg shadow">
+            <!-- Full Summary with toggle -->
             <p class="text-gray-700">
-                <strong>Summary:</strong> {{ r.summary[:200] }}...
+                <strong>Summary:</strong>
+                <span class="short">{{ r.summary[:200] }}{% if r.summary|length > 200 %}...{% endif %}</span>
+                {% if r.summary|length > 200 %}
+                <span class="full" style="display:none;">{{ r.summary }}</span>
+                <a href="#" class="toggle text-blue-600">Read more</a>
+                {% endif %}
             </p>
+
+            <!-- Questions & MCQs count -->
             <p class="text-gray-700 mt-2">
                 <strong>Questions:</strong> {{ r.questions|length }} | 
                 <strong>MCQs:</strong> {{ r.mcqs|length }}
             </p>
+
+            <!-- Timestamp -->
             <p class="text-sm text-gray-500 mt-1">🕒 {{ r.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
         </li>
         {% else %}
@@ -21,4 +31,16 @@
         {% endfor %}
     </ul>
 </div>
+
+<script>
+document.querySelectorAll('.toggle').forEach(btn => {
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        const parent = btn.parentElement;
+        parent.querySelector('.short').style.display = 'none';
+        parent.querySelector('.full').style.display = 'inline';
+        btn.style.display = 'none';
+    });
+});
+</script>
 {% endblock %}
