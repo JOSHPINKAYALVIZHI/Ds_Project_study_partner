@@ -272,3 +272,37 @@ footer {
         align-items: flex-start;
     }
 }
+
+input[type="radio"]:checked + label span,
+input[type="radio"]:checked + span,
+input[type="radio"]:checked ~ label span {
+    background-color: #c7d2ff;
+    color: #1e1e1e;
+    font-weight: 600;
+    border: 1px solid #4a6cf7;
+}
+
+
+input[type="radio"] {
+  display: none;
+}
+
+label span {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: all 0.2s;
+}
+
+label:hover span {
+  background-color: #eef4ff;
+  border-color: #7195ff;
+}
+
+input[type="radio"]:checked + span {
+  background-color: #c7d2ff;
+  color: #1e1e1e;
+  font-weight: 600;
+  border: 1px solid #4a6cf7;
+}

@@ -29,9 +29,9 @@
             <div class="mcq">
                 <p><strong>Q{{ i+1 }}: {{ mcq['question'] }}</strong></p>
                 {% for option in mcq['options'] %}
-                    <label>
+                    <label class="mcq-option">
                         <input type="radio" name="q{{ i }}" value="{{ option }}" required>
-                        {{ option }}
+                        <span>{{ option }}</span>
                     </label><br>
                 {% endfor %}
             </div>
@@ -40,4 +40,35 @@
         <button type="submit" class="submit-btn">🚀 Submit Answers</button>
     </form>
 </section>
+
+<!-- MCQ Highlighting Styles -->
+<style>
+.mcq-option {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.mcq-option input[type="radio"] {
+    display: none; /* hide the actual radio button */
+}
+
+.mcq-option span {
+    display: block;
+}
+
+.mcq-option input[type="radio"]:checked + span {
+    background-color: #4CAF50; /* highlight color */
+    color: white;
+    font-weight: bold;
+}
+.mcq-option:hover {
+    background-color: #e0f7fa;
+}
+</style>
 {% endblock %}
