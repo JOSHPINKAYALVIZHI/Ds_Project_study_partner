@@ -106,7 +106,7 @@ def submit_answers():
 def download(format):
     global last_result
     if not last_result:
-        return "⚠️ No results available for download."
+        return " No results available for download."
 
     if format == "txt":
         content = f"Summary:\n{last_result['summary']}\n\nQuestions:\n"

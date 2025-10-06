@@ -7,7 +7,7 @@ nltk.download("punkt")
 
 punkt_tokenizer = PunktSentenceTokenizer()  # standard tokenizer
 
-# Function to filter out headers, footers, and short sentences
+
 def clean_sentences(sentences):
     filtered = []
     for s in sentences:
